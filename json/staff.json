@@ -1,0 +1,20 @@
+[
+	{
+		"username": "stella.verburg",
+		"firstName": "Stella",
+		"lastName": "Verburg",
+		"email": "stella@verburg.nl"
+	},
+	{
+		"username": "dennis.burger", 
+		"firstName": "Dennis",
+		"lastName": "Burger",
+		"email": "dennis@poort80.nl"
+	},
+	{
+		"username": "p.pinda",
+		"firstName": "Passa", 
+		"lastName": "Pinda",
+		"email": "p.pinda@test.com" 
+	}
+]

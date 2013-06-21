@@ -15,12 +15,12 @@
 <!-- HTML blocks -->
 
 <h2>Staff members list</h2>
-<div id="staffContainer" data-handlebar-template="staffList"></div>
+<div id="staffContainer" data-handlebar-template="staffList" data-handlebar-json="json/staff.json"></div>
 
 <hr>
 
 <h2>Members</h2>
-<div id="employeesContainer" data-handlebar-template="employeeList"></div>
+<div id="employeesContainer" data-handlebar-template="employeeList" data-handlebar-json="json/employees.json"></div>
 
 <!-- Handlebar templates -->
 
