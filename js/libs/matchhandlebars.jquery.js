@@ -8,7 +8,7 @@
 */
 
 $.fn.matchHandlebars = function(dataSource) {
-	var handleResultTemplate = this.data('handlebar');
+	var handleResultTemplate = this.data('handlebar-template');
 	var handleResultSource = $('#' + handleResultTemplate).html();
 	var handleTemplate = Handlebars.compile(handleResultSource);
 	this.html(handleTemplate(dataSource));
