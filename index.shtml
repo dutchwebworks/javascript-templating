@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<link href="/css/style.css" rel="stylesheet">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+	<title>Javascript templating</title>
+</head>
+<body>
+
+
+<h1>Handlebars demo</h1>
+
+<div id="employeesContainer" data-handlebar="employeeList">	
+	<script id="employeeList" type="text/x-handlebars-template">
+		<table cellspacing="0" class="employeeList">
+			<thead>
+				<th>Username</th>
+				<th>Real Name</th>
+				<th>Email</th>
+			</thead>
+			<tbody>
+				{{#users}}
+				<tr>
+					<td>{{username}}</td>
+					<td>{{firstName}} {{lastName}}</td>
+					<td><a href="mailto:{{email}}">{{email}}</a></td>
+				</tr>
+				{{/users}}
+			</tbody>
+		</table>
+	</script>
+
+	<script>
+		var employeeListSource = { 
+			users: 
+				[
+					{
+						username: "alan", 
+						firstName: "Alan",
+						lastName: "Johnson",
+						email: "alan@test.com"
+					},
+					{
+						username: "allison",
+						firstName: "Allison", 
+						lastName: "House",
+						email: "allison@test.com" 
+					},
+					{
+						username: "ryan", 
+						firstName: "Ryan", 
+						lastName: "Carson", 
+						email: "ryan@test.com"
+					}
+				]
+		}
+
+		$(document).ready(function(){
+			$("#employeesContainer").matchHandlebar(employeeListSource);	 	
+		});	 
+	</script>
+</div>
+
+<script src="/js/libs/handlebars-1.0.rc.1.min.js"></script>
+<script src="/js/libs/matchhandlebar.jquery.js"></script>
+
+</body>
+</html>
