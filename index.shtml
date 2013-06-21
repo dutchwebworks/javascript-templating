@@ -12,108 +12,109 @@
 
 <h1>Handlebars demo</h1>
 
+<!-- HTML blocks -->
+
 <h2>Staff members list</h2>
-
-<div id="staffContainer" data-handlebar="staffList">
-	<script id="staffList" type="text/x-handlebars-template">
-		<ul>
-			{{#staff}}
-			<li><a href="http://secret.login.com/?username={{username}}&email={{email}}">{{firstName}} {{lastName}}</a></li>
-			{{/staff}}
-		</ul>
-	</script>
-
-	<script>
-		var staffMemberSource = {
-			staff:
-			[
-				{
-					username: "stella.verburg",
-					firstName: "Stella",
-					lastName: "Verburg",
-					email: "stella@verburg.nl"
-				},
-				{
-					username: "dennis.burger", 
-					firstName: "Dennis",
-					lastName: "Burger",
-					email: "dennis@poort80.nl"
-				},
-				{
-					username: "p.pinda",
-					firstName: "Passa", 
-					lastName: "Pinda",
-					email: "p.pinda@test.com" 
-				}
-			]
-		};
-
-		$(document).ready(function(){
-			$("#staffContainer").matchHandlebars(staffMemberSource);
-		});	 
-	</script>
-</div>
+<div id="staffContainer" data-handlebar="staffList"></div>
 
 <hr>
 
 <h2>Members</h2>
+<div id="employeesContainer" data-handlebar="employeeList"></div>
 
-<div id="employeesContainer" data-handlebar="employeeList">	
-	<script id="employeeList" type="text/x-handlebars-template">
-		<table cellspacing="0" class="employeeList">
-			<thead>
-				<th>Username</th>
-				<th>Real Name</th>
-				<th>Email</th>
-			</thead>
-			<tbody>
-				{{#users}}
-				<tr>
-					<td><a href="mailto:{{email}}">{{email}}</a></td>
-					<td>{{username}}</td>
-					<td>{{firstName}}, {{lastName}}</td>
-				</tr>
-				{{/users}}
-			</tbody>
-		</table>
-	</script>
+<!-- Handlebar templates -->
 
-	<script>
-		var employeeListSource = {
-			users: 
-			[
-				{
-					username: "alan.johnson", 
-					firstName: "Alan",
-					lastName: "Johnson",
-					email: "alan@test.com"
-				},
-				{
-					username: "allison.house",
-					firstName: "Allison", 
-					lastName: "House",
-					email: "allison@test.com" 
-				},
-				{
-					username: "ryan.carson", 
-					firstName: "Ryan", 
-					lastName: "Carson", 
-					email: "ryan@test.com"
-				},
-				{
-					username: "henk.herrie", 
-					firstName: "Henk",
-					lastName: "Herrie",
-					email: "herrie@henk.nl"
-				}
-			]
-		};
+<script id="staffList" type="text/x-handlebars-template">
+	<ul>
+		{{#staff}}
+		<li><a href="http://secret.login.com/?username={{username}}&email={{email}}">{{firstName}} {{lastName}}</a></li>
+		{{/staff}}
+	</ul>
+</script>
 
-		$(document).ready(function(){
-			$("#employeesContainer").matchHandlebars(employeeListSource);
-		});	 
-	</script>
-</div>
+<script id="employeeList" type="text/x-handlebars-template">
+	<table cellspacing="0" class="employeeList">
+		<thead>
+			<th>Username</th>
+			<th>Real Name</th>
+			<th>Email</th>
+		</thead>
+		<tbody>
+			{{#users}}
+			<tr>
+				<td><a href="mailto:{{email}}">{{email}}</a></td>
+				<td>{{username}}</td>
+				<td>{{firstName}}, {{lastName}}</td>
+			</tr>
+			{{/users}}
+		</tbody>
+	</table>
+</script>
+
+<!-- Json data objects -->
+
+<script>
+	var staffMemberSource = {
+		staff:
+		[
+			{
+				username: "stella.verburg",
+				firstName: "Stella",
+				lastName: "Verburg",
+				email: "stella@verburg.nl"
+			},
+			{
+				username: "dennis.burger", 
+				firstName: "Dennis",
+				lastName: "Burger",
+				email: "dennis@poort80.nl"
+			},
+			{
+				username: "p.pinda",
+				firstName: "Passa", 
+				lastName: "Pinda",
+				email: "p.pinda@test.com" 
+			}
+		]
+	};
+
+	var employeeListSource = {
+		users: 
+		[
+			{
+				username: "alan.johnson", 
+				firstName: "Alan",
+				lastName: "Johnson",
+				email: "alan@test.com"
+			},
+			{
+				username: "allison.house",
+				firstName: "Allison", 
+				lastName: "House",
+				email: "allison@test.com" 
+			},
+			{
+				username: "ryan.carson", 
+				firstName: "Ryan", 
+				lastName: "Carson", 
+				email: "ryan@test.com"
+			},
+			{
+				username: "henk.herrie", 
+				firstName: "Henk",
+				lastName: "Herrie",
+				email: "herrie@henk.nl"
+			}
+		]
+	};
+
+	// Match the data sources with the handlebar templates
+
+	$(document).ready(function(){
+		$("#employeesContainer").matchHandlebars(employeeListSource);
+		$("#staffContainer").matchHandlebars(staffMemberSource);
+	});
+</script>
 
 <script src="js/libs/handlebars-1.0.rc.1.min.js"></script>
 <script src="js/libs/matchhandlebars.jquery.js"></script>
