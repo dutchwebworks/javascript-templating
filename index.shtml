@@ -3,15 +3,60 @@
 <head>
 	<meta charset="UTF-8">
 
-	<link href="/css/style.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 
 	<title>Javascript templating</title>
 </head>
 <body>
 
-
 <h1>Handlebars demo</h1>
+
+<h2>Staff members list</h2>
+
+<div id="staffContainer" data-handlebar="staffList">
+	<script id="staffList" type="text/x-handlebars-template">
+		<ul>
+			{{#staff}}
+			<li><a href="http://secret.login.com/?username={{username}}&email={{email}}">{{firstName}} {{lastName}}</a></li>
+			{{/staff}}
+		</ul>
+	</script>
+
+	<script>
+		var staffMemberSource = {
+			staff:
+			[
+				{
+					username: "stella.verburg",
+					firstName: "Stella",
+					lastName: "Verburg",
+					email: "stella@verburg.nl"
+				},
+				{
+					username: "dennis.burger", 
+					firstName: "Dennis",
+					lastName: "Burger",
+					email: "dennis@poort80.nl"
+				},
+				{
+					username: "p.pinda",
+					firstName: "Passa", 
+					lastName: "Pinda",
+					email: "p.pinda@test.com" 
+				}
+			]
+		};
+
+		$(document).ready(function(){
+			$("#staffContainer").matchHandlebars(staffMemberSource);
+		});	 
+	</script>
+</div>
+
+<hr>
+
+<h2>Members</h2>
 
 <div id="employeesContainer" data-handlebar="employeeList">	
 	<script id="employeeList" type="text/x-handlebars-template">
@@ -24,9 +69,9 @@
 			<tbody>
 				{{#users}}
 				<tr>
-					<td>{{username}}</td>
-					<td>{{firstName}} {{lastName}}</td>
 					<td><a href="mailto:{{email}}">{{email}}</a></td>
+					<td>{{username}}</td>
+					<td>{{firstName}}, {{lastName}}</td>
 				</tr>
 				{{/users}}
 			</tbody>
@@ -34,38 +79,44 @@
 	</script>
 
 	<script>
-		var employeeListSource = { 
+		var employeeListSource = {
 			users: 
-				[
-					{
-						username: "alan", 
-						firstName: "Alan",
-						lastName: "Johnson",
-						email: "alan@test.com"
-					},
-					{
-						username: "allison",
-						firstName: "Allison", 
-						lastName: "House",
-						email: "allison@test.com" 
-					},
-					{
-						username: "ryan", 
-						firstName: "Ryan", 
-						lastName: "Carson", 
-						email: "ryan@test.com"
-					}
-				]
-		}
+			[
+				{
+					username: "alan.johnson", 
+					firstName: "Alan",
+					lastName: "Johnson",
+					email: "alan@test.com"
+				},
+				{
+					username: "allison.house",
+					firstName: "Allison", 
+					lastName: "House",
+					email: "allison@test.com" 
+				},
+				{
+					username: "ryan.carson", 
+					firstName: "Ryan", 
+					lastName: "Carson", 
+					email: "ryan@test.com"
+				},
+				{
+					username: "henk.herrie", 
+					firstName: "Henk",
+					lastName: "Herrie",
+					email: "herrie@henk.nl"
+				}
+			]
+		};
 
 		$(document).ready(function(){
-			$("#employeesContainer").matchHandlebar(employeeListSource);	 	
+			$("#employeesContainer").matchHandlebars(employeeListSource);
 		});	 
 	</script>
 </div>
 
-<script src="/js/libs/handlebars-1.0.rc.1.min.js"></script>
-<script src="/js/libs/matchhandlebar.jquery.js"></script>
+<script src="js/libs/handlebars-1.0.rc.1.min.js"></script>
+<script src="js/libs/matchhandlebars.jquery.js"></script>
 
 </body>
 </html>

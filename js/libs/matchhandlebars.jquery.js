@@ -7,7 +7,7 @@
 	and compiling Handlebar data
 */
 
-$.fn.matchHandlebar = function(dataSource) {
+$.fn.matchHandlebars = function(dataSource) {
 	var handleResultTemplate = this.data('handlebar');
 	var handleResultSource = $('#' + handleResultTemplate).html();
 	var handleTemplate = Handlebars.compile(handleResultSource);
