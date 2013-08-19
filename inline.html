@@ -2,17 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-
 	<link href="css/style.css" rel="stylesheet">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 
 	<title>Javascript templating</title>
 </head>
 <body>
 
 <h1>Handlebars demo</h1>
-
-<!-- HTML blocks -->
 
 <h2>Staff list</h2>
 <div data-handlebar data-handlebar-template="handlebars/staff-list.handlebar" data-handlebar-json="json/staff-list.json"></div>
@@ -22,45 +18,18 @@
 <h2>Employee list</h2>
 <div data-handlebar data-handlebar-template="handlebars/employee-list.handlebar" data-handlebar-json="json/employee-list.json"></div>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
 <script>
 	// Match the data sources with the handlebar templates
 	$(document).ready(function(){
-		$("[data-handlebar]").each(function(){
-			// Get URL's of handlebar template and json data
-			var handleResultTemplate = $(this).data('handlebar-template');
-			var handleResultSource = $(this).data('handlebar-json');
-
-			// create basic vars
-			var thisObject = $(this);
-			var thisTemplate, thisSource;
-			
-			// Ajax load the handlebar template
-			$.ajax({ 
-				async:false, 
-				url: handleResultTemplate,
-				success : function(data){ 
-					thisTemplate = data;
-				}
-			});
-
-			// Ajax load the json data
-			$.ajax({
-				async:false,
-				url: handleResultSource,
-				success : function(data){
-					thisSource = data;
-				}				
-			});
-
-			// Complile the handlebar template with the json data
-			var handleTemplate = Handlebars.compile(thisTemplate);
-			$(thisObject).html(handleTemplate(thisSource));
-		});
+		$("[data-handlebar]").matchHandlebars();
 	});
 </script>
 
 <script src="js/libs/handlebars-1.0.rc.1.min.js"></script>
-<!-- <script src="js/libs/matchhandlebars.jquery.js"></script> -->
+<script src="js/libs/matchhandlebars.jquery.js"></script>
+
 
 </body>
 </html>
