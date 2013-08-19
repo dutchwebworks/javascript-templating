@@ -1,0 +1,5 @@
+<ul>
+	{{#staff}}
+	<li><a href="http://secret.login.com/?username={{username}}&email={{email}}">{{firstName}} {{lastName}}</a></li>
+	{{/staff}}
+</ul>

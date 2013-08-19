@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<link href="css/style.css" rel="stylesheet">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+	<title>Javascript templating</title>
+</head>
+<body>
+
+<h1>Handlebars demo</h1>
+
+<!-- HTML blocks -->
+
+<h2>Staff list</h2>
+<div data-handlebar data-handlebar-template="handlebars/staff-list.handlebar" data-handlebar-json="json/staff-list.json"></div>
+
+<hr>
+
+<h2>Employee list</h2>
+<div data-handlebar data-handlebar-template="handlebars/employee-list.handlebar" data-handlebar-json="json/employee-list.json"></div>
+
+<script>
+	// Match the data sources with the handlebar templates
+	$(document).ready(function(){
+		$("[data-handlebar]").each(function(){
+			var handleResultTemplate = $(this).data('handlebar-template');
+			var handleResultSource = $(this).data('handlebar-json');
+
+			var thisObject = $(this);
+			var thisTemplate, thisSource;
+
+			// Load in the handlebar template
+			$.get(handleResultTemplate, function(data) {
+				thisTemplate = data;
+				// $(thisObject).append(data);
+				// console.log(data);
+			});
+
+			// Load in the json source
+			$.get(handleResultSource, function(data) {
+				thisSource = $.parseJSON(data);
+				// $(thisObject).prepend(data);
+				// console.log(data);
+			});
+
+			var handleTemplate = Handlebars.compile(thisTemplate);
+			$(thisObject).html(handleTemplate(thisSource));
+		});
+	});
+</script>
+
+<script src="js/libs/handlebars-1.0.rc.1.min.js"></script>
+<!-- <script src="js/libs/matchhandlebars.jquery.js"></script> -->
+
+</body>
+</html>
