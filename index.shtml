@@ -19,7 +19,13 @@
 	<script id="staffList" type="text/x-handlebars-template">
 		<ul>
 			{{#staff}}
-			<li><a href="http://secret.login.com/?username={{username}}&email={{email}}">{{firstName}} {{lastName}}</a></li>
+			<li>
+				{{#if title}}
+					<strong>{{title}}</strong>
+				{{/if}}
+
+				<a href="http://secret.login.com/?username={{username}}&email={{email}}">{{firstName}} {{lastName}}</a>
+			</li>
 			{{/staff}}
 		</ul>
 	</script>
@@ -29,6 +35,7 @@
 			staff:
 			[
 				{
+					title: "Dr.",
 					username: "stella.verburg",
 					firstName: "Stella",
 					lastName: "Verburg",
@@ -41,6 +48,7 @@
 					email: "dennis@poort80.nl"
 				},
 				{
+					title: "Ir.",
 					username: "p.pinda",
 					firstName: "Passa", 
 					lastName: "Pinda",
