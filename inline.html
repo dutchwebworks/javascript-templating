@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href="css/style.css" rel="stylesheet">
+
+	<title>Javascript templating</title>
+</head>
+<body>
+
+<h1>Handlebars demo</h1>
+
+<h2>Staff list</h2>
+<div data-handlebar data-handlebar-template="handlebars/staff-list.handlebar" data-handlebar-json="json/staff-list.json"></div>
+
+<hr>
+
+<h2>Employee list</h2>
+<div data-handlebar data-handlebar-template="handlebars/employee-list.handlebar" data-handlebar-json="json/employee-list.json"></div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+<script>
+	// Match the data sources with the handlebar templates
+	$(document).ready(function(){
+		$("[data-handlebar]").matchHandlebars();
+	});
+</script>
+
+<script src="js/libs/handlebars-1.0.rc.1.min.js"></script>
+<script src="js/libs/matchhandlebars.jquery.js"></script>
+
+
+</body>
+</html>

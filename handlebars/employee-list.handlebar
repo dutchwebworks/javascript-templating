@@ -1,0 +1,24 @@
+<table cellspacing="0" class="employeeList">
+	<thead>
+		<th>Username</th>
+		<th>Real Name</th>
+		<th>Email</th>
+		<th>Score</th>
+	</thead>
+	<tbody>
+		{{#users}}
+		<tr>
+			<td><a href="mailto:{{email}}">{{email}}</a></td>
+			<td>{{username}}</td>
+			<td>{{firstName}}, {{lastName}}</td>
+			<td>
+				{{#if score}}
+					{{score}}
+				{{else}}
+					no score
+				{{/if}}
+			</td>
+		</tr>
+		{{/users}}
+	</tbody>
+</table>
