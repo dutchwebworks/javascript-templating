@@ -26,26 +26,33 @@
 	// Match the data sources with the handlebar templates
 	$(document).ready(function(){
 		$("[data-handlebar]").each(function(){
+			// Get URL's of handlebar template and json data
 			var handleResultTemplate = $(this).data('handlebar-template');
 			var handleResultSource = $(this).data('handlebar-json');
 
+			// create basic vars
 			var thisObject = $(this);
 			var thisTemplate, thisSource;
-
-			// Load in the handlebar template
-			$.get(handleResultTemplate, function(data) {
-				thisTemplate = data;
-				// $(thisObject).append(data);
-				// console.log(data);
+			
+			// Ajax load the handlebar template
+			$.ajax({ 
+				async:false, 
+				url: handleResultTemplate,
+				success : function(data){ 
+					thisTemplate = data;
+				}
 			});
 
-			// Load in the json source
-			$.get(handleResultSource, function(data) {
-				thisSource = $.parseJSON(data);
-				// $(thisObject).prepend(data);
-				// console.log(data);
+			// Ajax load the json data
+			$.ajax({
+				async:false,
+				url: handleResultSource,
+				success : function(data){
+					thisSource = data;
+				}				
 			});
 
+			// Complile the handlebar template with the json data
 			var handleTemplate = Handlebars.compile(thisTemplate);
 			$(thisObject).html(handleTemplate(thisSource));
 		});
