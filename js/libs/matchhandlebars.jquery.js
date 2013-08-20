@@ -1,9 +1,13 @@
-/*
-	@author: Dennis Burger
-	@year: 2013
-	@email: dennis@dutchwebworks.nl
-	@prerequisite: jquery, handlebars.js
-*/
+/*!
+ * Author: Dennis Burger
+ * Matchhandlebars jQuery plugin
+ * https://github.com/dutchwebworks/javascript-templating
+ *
+ * Released under the MIT license
+ * http://jquery.org/license
+ *
+ * Date: Tue Aug 20 2013 12:19:33 GMT+0200 (Eastern Standard Time)
+ */
 
 $.fn.matchHandlebars = function(options) {
 	// Set default extendable settings
