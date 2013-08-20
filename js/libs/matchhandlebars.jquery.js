@@ -7,7 +7,8 @@
 $.fn.matchHandlebars = function(options) {
 	var settings = {
 		templateDataName: 'handlebar-template',
-		templateJsonName: 'handlebar-json'
+		templateJsonName: 'handlebar-json',
+		errorTitle: 'Could not load: '
 	};		
 	if(options) $.extend(settings, options);
 
@@ -16,16 +17,18 @@ $.fn.matchHandlebars = function(options) {
 		var handleResultTemplate = $(this).data(settings.templateDataName);
 		var handleResultSource = $(this).data(settings.templateJsonName);
 
-		// create basic vars
-		var thisObject = $(this);
+		// Create basic vars
 		var thisTemplate, thisSource;
-
+		
 		// Ajax load the handlebar template
 		$.ajax({ 
 			async:false, 
 			url: handleResultTemplate,
-			success : function(data){ 
+			success: function(data){ 
 				thisTemplate = data;
+			},
+			error: function() {
+				$(this).append(settings.errorTitle + handleResultTemplate + '<br>');
 			}
 		});
 
@@ -33,13 +36,18 @@ $.fn.matchHandlebars = function(options) {
 		$.ajax({
 			async:false,
 			url: handleResultSource,
-			success : function(data){
+			success: function(data){
 				thisSource = data;
-			}				
+			},
+			error: function() {
+				$(this).append(settings.errorTitle + handleResultSource + '<br>');
+			}			
 		});
 
 		// Complile the handlebar template with the json data
-		var handleTemplate = Handlebars.compile(thisTemplate);
-		$(thisObject).html(handleTemplate(thisSource));
+		if(thisTemplate != null && thisSource != null) {
+			var handleTemplate = Handlebars.compile(thisTemplate);
+			$(this).html(handleTemplate(thisSource));
+		}
 	 });
 }
