@@ -1,27 +1,11 @@
 {
-	"title": "Intro",
-	"btn-label": "Sign up!",
-	"btn-href": "http://www.github.com/",
+	"title": "Basic example with text and repeating paragraphs",
 	"paragraphs":
 	[
-		{
-			"class": "intro",
-			"p": "With repeating paragraphs. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, fugit dolore voluptas aliquid vitae rerum illum accusamus consequuntur numquam debitis!"
-		},
-		{
-			"class": "wide",
-			"p": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, iusto, excepturi maiores quae ipsum commodi."
-		},
-		{
-
-			"p": "Consectetur adipisicing elit. Maxime quam asperiores accusamus necessitatibus alias delectus accusantium tenetur iure earum numquam!"
-		},
-		{
-			"p": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit."
-		},
-		{
-
-			"p": "Last line Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, impedit. Amet, consectetur adipisicing elit. Odio veniam quibusdam aperiam repudiandae."
-		}
-	]	
+		"With repeating paragraphs. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, fugit dolore voluptas aliquid vitae rerum illum accusamus consequuntur numquam debitis!",
+		"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, iusto, excepturi maiores quae ipsum commodi.",
+		"Consectetur adipisicing elit. Maxime quam asperiores accusamus necessitatibus alias delectus accusantium tenetur iure earum numquam!"
+	],
+	"btn-label": "Github page",
+	"btn-href": "http://www.github.com/dutchwebworks/javascript-templating"
 }

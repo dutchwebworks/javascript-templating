@@ -1,15 +1,10 @@
 <h3>{{title}}</h3>
 
-{{#paragraphs}}
-	{{#if class}}
-		<p class="{{class}}" title="{{@index}}">
-	{{else}}
-		<p title="{{@index}}">
-	{{/if}}
-
-		{{p}}
+{{#each paragraphs}}
+	<p>
+		{{this}}
 	</p>
-{{/paragraphs}}
+{{/each}}
 
 <p>
 	<a href="{{btn-href}}">{{btn-label}}</a>
