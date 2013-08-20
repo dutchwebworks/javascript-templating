@@ -3,9 +3,6 @@
  * Matchhandlebars jQuery plugin
  * https://github.com/dutchwebworks/javascript-templating
  *
- * Released under the MIT license
- * http://jquery.org/license
- *
  * Date: Tue Aug 20 2013 12:19:33 GMT+0200 (Eastern Standard Time)
  */
 
