@@ -11,7 +11,7 @@ $.fn.matchHandlebars = function(options) {
 	var settings = {
 		handlebarAttribute: 'handlebar-template',
 		jsonAttribute: 'handlebar-json',
-		errorLoading: 'Could not load:'
+		errorLoading: 'Could not load or parse:'
 	};	
 	if(options) $.extend(settings, options);
 

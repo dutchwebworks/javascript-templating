@@ -1,0 +1,16 @@
+<h3>{{title}}</h3>
+
+{{#paragraphs}}
+	{{#if class}}
+		<p class="{{class}}" title="{{@index}}">
+	{{else}}
+		<p title="{{@index}}">
+	{{/if}}
+
+		{{p}}
+	</p>
+{{/paragraphs}}
+
+<p>
+	<a href="{{btn-href}}">{{btn-label}}</a>
+</p>
