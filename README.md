@@ -1,17 +1,28 @@
-# Javascript templating system using jQuery and Handlebars.js
+# jQuery plugin for Javascript templating using Handlebars.js
 
-Loading in a `.handlebar` file and matching it with a `.json` data source using HTML5 data-attributes.
+Ajax load in a `.handlebars` file and a `.json` data-source using **HTML5 data-attributes**.  By changing the json data-source file, adding more example text and or nodes, one can (stress) test the (responsive) HTML module(s) in a working prototype.
 
-By changing the json data source file (add more or less data in json file) you can (stress) test your HTML modules in the (responsive) web browser.
+This can be usefull to test the limits of certain HTML module block layouts and see when things 'break' when suddenly there's a lot of or lack of content. Also handy for creating **style-guides**.
 
-* Separate `.handlebar` file
-* Separate `.json` data source
+## Prerequisites
 
-## HTML
+* [jQuery 1.7+](http://jquery.com/)
+* [Handlebars 1.0+](http://handlebarsjs.com/)
+* Proper **mime-types** configured for `.handlebars` and `.json` files on the web server (see below)
 
-`<div data-handlebar data-handlebar-template="handlebars/staff-list.handlebar" data-handlebar-json="json/staff-list.json"></div>`
 
-## Javascript
+## Usage
+
+### HTML
+
+Load jQuery into the HTML file. Then insert an empty `div` -tag with required **HTML5 data-attributes** for the URL of a `.handlebars` file and the URL of 
+a `.json` data source file.
+
+`<div data-handlebar data-handlebar-template="handlebars/staff-list.handlebars" data-handlebar-json="json/staff-list.json"></div>`
+
+### Javascript
+
+At the bottom of the HTML file call the `matchHandlebars();` function on the required `div` -tag which contain the appropriate HTML5 data-attributes. On document load the `.handlebars` template is compiled with the `.json` data-source and inserted back into the `div` -tag.
 
 	<script>
 		// Match the data sources with the handlebar templates
@@ -20,9 +31,25 @@ By changing the json data source file (add more or less data in json file) you c
 		});
 	</script>
 
+#### Options
+
+The standard used **HTML5 data-attributes**, in this plugin, can be re-configured to have different attribute names.
+
+	<script>
+		// Match the data sources with the handlebar templates
+		$(document).ready(function(){
+			$("[data-handlebar]").matchHandlebars({
+				templateDataName: 'handlebar-url',
+				templateJsonName: 'json-url'
+			});
+		});
+	</script>
+
 ## Mime-types
 
-Be aware of the proper mime-types for the following file extensions:
+Be aware that the web server must send the proper mime-types for the following file extensions.
 
 * `.json` must be set to `application/json`
-* `.handlebar` must be set to `text/x-handlebars-template`
+* `.handlebars` must be set to `text/x-handlebars-template`
+
+There are example web server configuration files for both Apache (`.htaccess`) and Microsoft IIS (`web.config`) in this project repository.

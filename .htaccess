@@ -1,0 +1,9 @@
+#################################
+## Check for mod_mime module
+## And set proper mime-types
+#################################
+
+<IfModule mod_mime.c>
+	AddType application/json .json
+	AddType text/x-handlebars-template  .handlebars .hdb
+</IfModule> 
