@@ -1,24 +1,51 @@
 # jQuery plugin for Javascript templating using Handlebars.js & HTML5 data-attributes
 
-Ajax load in a `.handlebars` file and a `.json` data-source using **HTML5 data-attributes**.  By changing the json data-source file, adding more example text and or nodes, one can (stress) test the (responsive) HTML module(s) in a working prototype.
+Ajax load in a `.handlebars` template file and a `.json` data-source using **HTML5 data-attributes**.  By changing the json data-source file, adding more example text and or nodes, one can (stress) **test** the (responsive) HTML module(s) in a **working prototype**. This is meant for local development, not production ready HTML.
 
-This can be usefull to test the limits of certain HTML module block layouts and see when things 'break' when suddenly there's a lot of or lack of content. Also handy for creating **style-guides**.
+This can be usefull to test the limits of certain HTML module blocs and see when things 'break' when suddenly there's a lot of or lack of content. Also handy for creating **style-guides**.
 
 ## Prerequisites
 
-* [jQuery 1.7+](http://jquery.com/)
+* [jQuery](http://jquery.com/)
 * [Handlebars 1.0+](http://handlebarsjs.com/)
 * Proper **mime-types** configured for `.handlebars` and `.json` files on the web server (see below)
 
-
 ## Usage
+
+### intro.json data-source file
+
+	{
+		"title": "Basic example with text and repeating paragraphs",
+		"paragraphs":
+		[
+			"With repeating paragraphs. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, fugit dolore voluptas aliquid vitae rerum illum accusamus consequuntur numquam debitis!",
+			"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, iusto, excepturi maiores quae ipsum commodi.",
+			"Consectetur adipisicing elit. Maxime quam asperiores accusamus necessitatibus alias delectus accusantium tenetur iure earum numquam!"
+		],
+		"btn-label": "Github page",
+		"btn-href": "http://www.github.com/dutchwebworks/javascript-templating"
+	}
+	
+### intro.handlebars template file
+
+	<h3>{{title}}</h3>
+
+	{{#each paragraphs}}
+		<p>
+			{{this}}
+		</p>
+	{{/each}}
+
+	<p>
+		<a href="{{btn-href}}">{{btn-label}}</a>
+	</p>
 
 ### HTML
 
 Load jQuery into the HTML file. Then insert an empty `div` -tag with required **HTML5 data-attributes** for the URL of a `.handlebars` file and the URL of 
 a `.json` data source file.
 
-`<div data-handlebar data-handlebar-template="handlebars/staff-list.handlebars" data-handlebar-json="json/staff-list.json"></div>`
+`<div data-handlebar data-handlebar-template="handlebars/intro.handlebars" data-handlebar-json="json/intro.json"></div>`
 
 ### Javascript
 
