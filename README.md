@@ -39,8 +39,9 @@ The standard used **HTML5 data-attributes**, in this plugin, can be re-configure
 		// Match the data sources with the handlebar templates
 		$(document).ready(function(){
 			$("[data-handlebar]").matchHandlebars({
-				templateDataName: 'handlebar-url',
-				templateJsonName: 'json-url'
+				handlebarAttribute: 'handlebar-url',
+				jsonAttribute: 'json-url',
+				errorPrefixTitle: 'Could not load the file: '
 			});
 		});
 	</script>

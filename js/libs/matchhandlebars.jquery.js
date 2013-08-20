@@ -5,49 +5,41 @@
 */
 
 $.fn.matchHandlebars = function(options) {
+	// Set default settings
 	var settings = {
-		templateDataName: 'handlebar-template',
-		templateJsonName: 'handlebar-json',
-		errorTitle: 'Could not load: '
-	};		
+		handlebarAttribute: 'handlebar-template',
+		jsonAttribute: 'handlebar-json',
+		errorLoading: 'Could not load:',
+		errorParsing: 'Could not parse Handlebars'
+	};	
 	if(options) $.extend(settings, options);
 
-	return this.each(function() {
-		// Get URL's of handlebar template and json data
-		var handleResultTemplate = $(this).data(settings.templateDataName);
-		var handleResultSource = $(this).data(settings.templateJsonName);
-
-		// Create basic vars
-		var thisTemplate, thisSource;
-		
-		// Ajax load the handlebar template
+	// Ajax loader
+	loadAjaxFile = function(fileUrl) {
+		var result = false;
 		$.ajax({ 
-			async:false, 
-			url: handleResultTemplate,
-			success: function(data){ 
-				thisTemplate = data;
+			async: false, 
+			url: fileUrl,
+			success: function(data){
+				result = data;
 			},
 			error: function() {
-				$(this).append(settings.errorTitle + handleResultTemplate + '<br>');
+				result = settings.errorLoading + ' ' + fileUrl;
 			}
 		});
+		return result;
+	}
 
-		// Ajax load the json data
-		$.ajax({
-			async:false,
-			url: handleResultSource,
-			success: function(data){
-				thisSource = data;
-			},
-			error: function() {
-				$(this).append(settings.errorTitle + handleResultSource + '<br>');
-			}			
-		});
+	return this.each(function() {
+		var handlebarTemplate = loadAjaxFile($(this).data(settings.handlebarAttribute));
+		var jsonDataSource = loadAjaxFile($(this).data(settings.jsonAttribute));
 
 		// Complile the handlebar template with the json data
-		if(thisTemplate != null && thisSource != null) {
-			var handleTemplate = Handlebars.compile(thisTemplate);
-			$(this).html(handleTemplate(thisSource));
+		if(handlebarTemplate != null && jsonDataSource != null) {
+			var handleTemplate = Handlebars.compile(handlebarTemplate);
+			$(this).html(handleTemplate(jsonDataSource));
+		} else {
+			$(this).html(settings.errorParsing);
 		}
-	 });
+	});
 }
