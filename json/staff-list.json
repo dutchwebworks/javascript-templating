@@ -2,23 +2,23 @@
 	"staff":
 	[
 		{
-			"title": "Dr.",
+			"title": "Doctor",
 			"username": "stella.verburg",
 			"firstName": "Stella",
 			"lastName": "Verburg",
 			"email": "stella@verburg.nl"
 		},
 		{
-			"username": "dennis.burger", 
-			"firstName": "Dennis",
-			"lastName": "Burger",
-			"email": "dennis@poort80.nl"
+			"username": "kevin.vandermeer", 
+			"firstName": "Kevin",
+			"lastName": "van der Meer",
+			"email": "kevin.vandermeer@yahoo.com"
 		},
 		{
-			"title": "Ir.",
-			"username": "p.pinda",
+			"title": "SEO",
+			"username": "passa.enuit",
 			"firstName": "Passa", 
-			"lastName": "Pinda",
+			"lastName": "Enuit",
 			"email": "p.pinda@test.com" 
 		}
 	]

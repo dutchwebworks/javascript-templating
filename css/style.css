@@ -1,11 +1,25 @@
 body {
 	font-family: 'Gill Sans', Arial, serif;
+	color: #777;
+	background: #ffe;
+}
+
+h1 {
+	text-align: center;
+}
+
+h2 {
 	color: #333;
+}
+
+table {
+	width: 100%;
 }
 
 th, td {
 	text-align: left;
 	padding: 5px 20px 5px 0;
+	color: #333;
 }
 
 th {
@@ -14,4 +28,19 @@ th {
 
 tr:nth-child(odd) td {
 	background-color: #eee;
+}
+
+hr {
+	border: 0;
+	border-top: 1px dashed #333;
+}
+
+h1,
+a {
+	color: #4183C4;
+}
+
+section {
+	width: 35em;
+	margin: 0 auto;
 }

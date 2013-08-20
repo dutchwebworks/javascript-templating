@@ -1,11 +1,12 @@
 /*
 	@author: Dennis Burger
+	@year: 2013
 	@email: dennis@dutchwebworks.nl
-	@prerequisite: jquery.min.js, handlebars-1.0.rc.1.min.js
+	@prerequisite: jquery, handlebars.js
 */
 
 $.fn.matchHandlebars = function(options) {
-	// Set default settings
+	// Set default extendable settings
 	var settings = {
 		handlebarAttribute: 'handlebar-template',
 		jsonAttribute: 'handlebar-json',
@@ -18,7 +19,8 @@ $.fn.matchHandlebars = function(options) {
 
 	// Ajax loader
 	loadAjaxFile = function(fileUrl) {
-		var result = false;
+		var result = null;
+
 		$.ajax({ 
 			async: false, 
 			url: fileUrl,
@@ -27,9 +29,10 @@ $.fn.matchHandlebars = function(options) {
 			},
 			error: function() {
 				errors.push(settings.errorLoading + ' ' + fileUrl);
-				result = false;
+				result = null;
 			}
 		});
+
 		return result;
 	}
 
@@ -38,16 +41,18 @@ $.fn.matchHandlebars = function(options) {
 		var handlebarTemplate = loadAjaxFile($(this).data(settings.handlebarAttribute));
 		var jsonDataSource = loadAjaxFile($(this).data(settings.jsonAttribute));
 
-		// Report Ajax loading erros
+		// Report Ajax loading errors
 		if(errors.length > 0) {
 			for(i = 0; i < errors.length; i++) {
 				$(this).append(errors[i] + '<br>');
 			}
-			// Clear the errors
-			errors = false;
-		} else if(handlebarTemplate != null && jsonDataSource != null) {
+
+			// Clear the errors for the next iterating element
+			errors.length = 0;
+		} else if(handlebarTemplate && jsonDataSource) {
 			// Complile the handlebar template with the json data
 			var handleTemplate = Handlebars.compile(handlebarTemplate);
+			// Stick it back into the HTML element
 			$(this).html(handleTemplate(jsonDataSource));
 		}
 	});

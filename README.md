@@ -1,4 +1,4 @@
-# jQuery plugin for Javascript templating using Handlebars.js
+# jQuery plugin for Javascript templating using Handlebars.js & HTML5 data-attributes
 
 Ajax load in a `.handlebars` file and a `.json` data-source using **HTML5 data-attributes**.  By changing the json data-source file, adding more example text and or nodes, one can (stress) test the (responsive) HTML module(s) in a working prototype.
 
@@ -41,7 +41,7 @@ The standard used **HTML5 data-attributes**, in this plugin, can be re-configure
 			$("[data-handlebar]").matchHandlebars({
 				handlebarAttribute: 'handlebar-url',
 				jsonAttribute: 'json-url',
-				errorPrefixTitle: 'Could not load the file: '
+				errorLoading: 'Could not load the file:'
 			});
 		});
 	</script>

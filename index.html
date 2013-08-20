@@ -8,17 +8,33 @@
 </head>
 <body>
 
-<h1>Handlebars demo</h1>
+<section>
+	<h1>jQuery plugin for Javascript templating using <a href="http://handlebarsjs.com/">Handlebars.js</a> &amp; HTML5 data-attributes</h1>
+	
+	<p>
+		More info on the <strong>Github page</strong> <a href="https://github.com/dutchwebworks/javascript-templating">Dutchwebworks &raquo; Javascript-templating</a> page.
+	</p>
 
-<h2>Staff list</h2>
-<div data-handlebar data-handlebar-template="handlebars/staff-list.handlebars" data-handlebar-json="json/staff-list.json"></div>
+	<hr>
 
-<hr>
+	<h2>Staff list (with predefined login url)</h2>
+	<div data-handlebar data-handlebar-template="handlebars/staff-list.handlebars" data-handlebar-json="json/staff-list.json"></div>
+	
+	<hr>
+	
+	<h2>Employee list (table view)</h2>
+	<div data-handlebar data-handlebar-template="handlebars/employee-list.handlebars" data-handlebar-json="json/employee-list.json"></div>
 
-<h2>Employee list</h2>
-<div data-handlebar data-handlebar-template="handlebars/employee-list.handlebars" data-handlebar-json="json/employee-list.json"></div>
+	<hr>
+
+	<p>
+		<small>By Dennis Burger, 2013</small>
+	</p>
+</section>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="js/libs/handlebars-1.0.rc.1.min.js"></script>
+<script src="js/libs/matchhandlebars.jquery.js"></script>
 
 <script>
 	// Match the data sources with the handlebar templates
@@ -26,10 +42,6 @@
 		$("[data-handlebar]").matchHandlebars();
 	});
 </script>
-
-<script src="js/libs/handlebars-1.0.rc.1.min.js"></script>
-<script src="js/libs/matchhandlebars.jquery.js"></script>
-
 
 </body>
 </html>
