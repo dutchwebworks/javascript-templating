@@ -9,10 +9,12 @@ $.fn.matchHandlebars = function(options) {
 	var settings = {
 		handlebarAttribute: 'handlebar-template',
 		jsonAttribute: 'handlebar-json',
-		errorLoading: 'Could not load:',
-		errorParsing: 'Could not parse Handlebars'
+		errorLoading: 'Could not load:'
 	};	
 	if(options) $.extend(settings, options);
+
+	// Vars
+	var errors = new Array();
 
 	// Ajax loader
 	loadAjaxFile = function(fileUrl) {
@@ -24,22 +26,29 @@ $.fn.matchHandlebars = function(options) {
 				result = data;
 			},
 			error: function() {
-				result = settings.errorLoading + ' ' + fileUrl;
+				errors.push(settings.errorLoading + ' ' + fileUrl);
+				result = false;
 			}
 		});
 		return result;
 	}
 
+	// Return the compiled handlebar template with the json data-source
 	return this.each(function() {
 		var handlebarTemplate = loadAjaxFile($(this).data(settings.handlebarAttribute));
 		var jsonDataSource = loadAjaxFile($(this).data(settings.jsonAttribute));
 
-		// Complile the handlebar template with the json data
-		if(handlebarTemplate != null && jsonDataSource != null) {
+		// Report Ajax loading erros
+		if(errors.length > 0) {
+			for(i = 0; i < errors.length; i++) {
+				$(this).append(errors[i] + '<br>');
+			}
+			// Clear the errors
+			errors = false;
+		} else if(handlebarTemplate != null && jsonDataSource != null) {
+			// Complile the handlebar template with the json data
 			var handleTemplate = Handlebars.compile(handlebarTemplate);
 			$(this).html(handleTemplate(jsonDataSource));
-		} else {
-			$(this).html(settings.errorParsing);
 		}
 	});
 }
