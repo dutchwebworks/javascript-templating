@@ -5,5 +5,5 @@
 
 <IfModule mod_mime.c>
 	AddType application/json .json
-	AddType text/x-handlebars-template  .handlebars .hdb
+	AddType text/x-handlebars-template .handlebars .hbs
 </IfModule> 
