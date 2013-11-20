@@ -8,12 +8,11 @@
 
 $.fn.matchHandlebars = function(options) {
 	// Set default extendable settings
-	var settings = {
+	var settings = $.extend({
 		handlebarAttribute: 'handlebar-template',
 		jsonAttribute: 'handlebar-json',
 		errorLoading: 'Could not load or parse:'
-	};	
-	if(options) $.extend(settings, options);
+	}, options);
 
 	// Vars
 	var errors = new Array();
